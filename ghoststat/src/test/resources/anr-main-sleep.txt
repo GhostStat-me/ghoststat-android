@@ -1,0 +1,86 @@
+Subject: Input dispatching timed out (b1f9597 me.ghoststat.crashtest/t.crash.Main is not responding. Waited 5001ms for TouchModeEvent(inTouchMode=true)).
+RssHwmKb: 139468
+RssKb: 133164
+RssAnonKb: 40760
+RssShmemKb: 10752
+VmSwapKb: 21840
+
+
+--- CriticalEventLog ---
+capacity: 20
+events <
+  timestamp_ms: 1790963071826
+  install_packages <
+  >
+>
+events <
+  timestamp_ms: 1790963072551
+  java_crash <
+    exception_class: "java.lang.IllegalStateException"
+    pid: 19286
+    process: "me.ghoststat.crashtest"
+    process_class: 1
+    uid: 10216
+  >
+>
+events <
+  timestamp_ms: 1790963077667
+  native_crash <
+    pid: 19326
+    process: "me.ghoststat.crashtest"
+    process_class: 1
+    uid: 10216
+  >
+>
+timestamp_ms: 1790963094409
+window_ms: 300000
+
+----- dumping pid: 19361 at 163950950
+
+----- pid 19361 at 2026-10-02 13:44:54.417158094-0400 -----
+Cmd line: me.ghoststat.crashtest
+Build fingerprint: 'google/sdk_gphone64_arm64/emu64a:16/BE2A.250530.026.F3/13894323:userdebug/dev-keys'
+ABI: 'arm64'
+Build type: optimized
+Debug Store: 3,2,163950963::ID:1,C:E,T:163942570||ID:1,C:S,T:163942457,N:BindApp;;
+suspend all histogram:	Sum: 989us 99% C.I. 0.109us-443.200us Avg: 65.933us Max: 444us
+DALVIK THREADS (18):
+"main" prio=5 tid=1 Sleeping
+  | group="main" sCount=1 ucsCount=0 flags=1 obj=0x722f8f98 self=0xb400006f624af7b0
+  | sysTid=19361 nice=0 cgrp=background sched=0/0 handle=0x709e9ef090
+  | state=S schedstat=( 252173849 69386134 247 ) utm=18 stm=6 core=2 HZ=100
+  | stack=0x7fdec5f000-0x7fdec61000 stackSize=8188KB
+  | held mutexes=
+  at java.lang.Thread.sleep(Native method)
+  - sleeping on <0x0837cd5b> (a java.lang.Object)
+  at java.lang.Thread.sleep(Thread.java:451)
+  - locked <0x0837cd5b> (a java.lang.Object)
+  at java.lang.Thread.sleep(Thread.java:356)
+  at t.crash.Main.onCreate$lambda$0(Main.kt:18)
+  at t.crash.Main$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+  at android.os.Handler.handleCallback(Handler.java:995)
+  at android.os.Handler.dispatchMessage(Handler.java:103)
+  at android.os.Looper.loopOnce(Looper.java:248)
+  at android.os.Looper.loop(Looper.java:338)
+  at android.app.ActivityThread.main(ActivityThread.java:9067)
+  at java.lang.reflect.Method.invoke(Native method)
+  at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:932)
+DumpLatencyMs: 1.78446
+
+"FinalizerDaemon" daemon prio=5 tid=6 Waiting
+  | group="system" sCount=1 ucsCount=0 flags=1 obj=0x20946c8 self=0xb400006f624ac010
+  | sysTid=19369 nice=4 cgrp=background sched=0/0 handle=0x6d9413b500
+  | state=S schedstat=( 215709 784542 2 ) utm=0 stm=0 core=3 HZ=100
+  | stack=0x6d94038000-0x6d9403a000 stackSize=1037KB
+  | held mutexes=
+  at java.lang.Object.wait(Native method)
+  - waiting on <0x0fb659f8> (a java.lang.Object)
+  at java.lang.Object.wait(Object.java:405)
+  at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:207)
+  - locked <0x0fb659f8> (a java.lang.Object)
+  at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:228)
+  at java.lang.Daemons$FinalizerDaemon.runInternal(Daemons.java:348)
+  at java.lang.Daemons$Daemon.run(Daemons.java:132)
+  at java.lang.Thread.run(Thread.java:1119)
+DumpLatencyMs: 17.9895
